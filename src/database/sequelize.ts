@@ -17,30 +17,3 @@ const sequelize = new Sequelize({
 });
 
 export default sequelize;
-
-// export const SyncModels = async () => {
-//   const { all } = sequelize.modelManager;
-//   const seen: typeof Model[] = [];
-
-//   const syncRecursive = async (model: typeof Model) => {
-//     if (seen.find(e => e === model)) return;
-
-//     seen.push(model);
-
-//     const associatedModels = Object.values(model.associations);
-//     for (const assoc of associatedModels) {
-//       if (assoc.associationType in ['HasMany', 'HasOne']) continue;
-
-//       await syncRecursive(assoc.target);
-//     }
-
-//     return model.sync({ force: !!Number(process.env.DEV) });
-//   };
-
-//   for (const model of all) {
-//     await syncRecursive(model);
-//   }
-//   await sequelize.sync({ force: true });
-// };
-
-// SyncModels().then(() => console.log('Synced all models'));
